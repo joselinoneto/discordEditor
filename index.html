@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Rich Text Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-discord"></i> Discord Rich Text Editor</h1>
+            <p class="subtitle">Format your text for Discord messages and embeds</p>
+        </header>
+
+        <div class="main-content">
+            <div class="editor-section">
+                <div class="toolbar">
+                    <button class="tool-btn" data-format="bold" title="Bold (Ctrl+B)">
+                        <i class="fas fa-bold"></i>
+                    </button>
+                    <button class="tool-btn" data-format="italic" title="Italic (Ctrl+I)">
+                        <i class="fas fa-italic"></i>
+                    </button>
+                    <button class="tool-btn" data-format="underline" title="Underline (Ctrl+U)">
+                        <i class="fas fa-underline"></i>
+                    </button>
+                    <button class="tool-btn" data-format="strikethrough" title="Strikethrough">
+                        <i class="fas fa-strikethrough"></i>
+                    </button>
+                    <div class="divider"></div>
+                    <button class="tool-btn" data-format="code" title="Inline Code">
+                        <i class="fas fa-code"></i>
+                    </button>
+                    <button class="tool-btn" data-format="codeblock" title="Code Block">
+                        <i class="fas fa-file-code"></i>
+                    </button>
+                    <div class="divider"></div>
+                    <button class="tool-btn" data-format="spoiler" title="Spoiler">
+                        <i class="fas fa-eye-slash"></i>
+                    </button>
+                    <button class="tool-btn" data-format="quote" title="Quote">
+                        <i class="fas fa-quote-left"></i>
+                    </button>
+                    <button class="tool-btn" data-format="blockquote" title="Block Quote">
+                        <i class="fas fa-quote-right"></i>
+                    </button>
+                    <div class="divider"></div>
+                    <button class="tool-btn" data-format="header1" title="Header 1">
+                        <span style="font-weight: bold;">H1</span>
+                    </button>
+                    <button class="tool-btn" data-format="header2" title="Header 2">
+                        <span style="font-weight: bold;">H2</span>
+                    </button>
+                    <button class="tool-btn" data-format="header3" title="Header 3">
+                        <span style="font-weight: bold;">H3</span>
+                    </button>
+                    <div class="divider"></div>
+                    <button class="tool-btn" data-format="list" title="Bullet List">
+                        <i class="fas fa-list-ul"></i>
+                    </button>
+                    <button class="tool-btn" data-format="link" title="Link">
+                        <i class="fas fa-link"></i>
+                    </button>
+                </div>
+
+                <div class="editor-container">
+                    <textarea id="editor" placeholder="Type or paste your content here..."></textarea>
+                </div>
+
+                <div class="output-section">
+                    <div class="output-tabs">
+                        <button class="tab-btn active" data-tab="markdown">Discord Markdown</button>
+                        <button class="tab-btn" data-tab="embed">Embed JSON</button>
+                    </div>
+
+                    <div class="output-content">
+                        <div id="markdown-output" class="output-panel active">
+                            <div class="output-header">
+                                <span>Copy this to Discord</span>
+                                <button class="copy-btn" data-target="markdown">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                            <pre id="markdown-text"></pre>
+                        </div>
+
+                        <div id="embed-output" class="output-panel">
+                            <div class="output-header">
+                                <span>Use with Discord Webhook</span>
+                                <button class="copy-btn" data-target="embed">
+                                    <i class="fas fa-copy"></i> Copy JSON
+                                </button>
+                            </div>
+                            <div class="embed-config">
+                                <div class="config-row">
+                                    <label>Embed Title:</label>
+                                    <input type="text" id="embed-title" placeholder="Optional embed title">
+                                </div>
+                                <div class="config-row">
+                                    <label>Embed Color:</label>
+                                    <input type="color" id="embed-color" value="#5865F2">
+                                    <input type="text" id="embed-color-hex" value="#5865F2" maxlength="7">
+                                </div>
+                                <div class="config-row">
+                                    <label>Author Name:</label>
+                                    <input type="text" id="embed-author" placeholder="Optional author name">
+                                </div>
+                                <div class="config-row">
+                                    <label>Footer Text:</label>
+                                    <input type="text" id="embed-footer" placeholder="Optional footer text">
+                                </div>
+                            </div>
+                            <pre id="embed-json"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-section">
+                <h3><i class="fas fa-eye"></i> Live Preview</h3>
+                <div class="discord-preview">
+                    <div class="discord-message">
+                        <div class="discord-avatar"></div>
+                        <div class="discord-content">
+                            <div class="discord-username">You <span class="discord-timestamp">Today at 12:00 PM</span></div>
+                            <div id="preview-content" class="discord-text">Your formatted text will appear here...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-section">
+                    <h4><i class="fas fa-question-circle"></i> Discord Formatting Guide</h4>
+                    <div class="help-content">
+                        <div class="help-item">
+                            <code>**bold**</code> → <strong>bold</strong>
+                        </div>
+                        <div class="help-item">
+                            <code>*italic*</code> → <em>italic</em>
+                        </div>
+                        <div class="help-item">
+                            <code>__underline__</code> → <u>underline</u>
+                        </div>
+                        <div class="help-item">
+                            <code>~~strikethrough~~</code> → <s>strikethrough</s>
+                        </div>
+                        <div class="help-item">
+                            <code>`code`</code> → <code>code</code>
+                        </div>
+                        <div class="help-item">
+                            <code>||spoiler||</code> → <span class="spoiler">spoiler</span>
+                        </div>
+                        <div class="help-item">
+                            <code>&gt; quote</code> → quote line
+                        </div>
+                        <div class="help-item">
+                            <code># Heading</code> → <strong style="font-size: 1.2em;">Heading</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Copied to clipboard!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
