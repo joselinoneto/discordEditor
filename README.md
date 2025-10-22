@@ -1,113 +1,87 @@
 # Discord Rich Text Editor
 
-A beautiful, modern web-based rich text editor designed specifically for creating Discord-formatted messages and embeds. Format your text with ease and copy it directly to Discord!
+A simple web-based rich text editor for creating Discord-formatted messages using standard markdown syntax. Format your text with ease and copy it directly to Discord!
 
 ## 🌟 Features
 
-- **Rich Text Editing**: Easy-to-use toolbar with all Discord formatting options
+- **Markdown-Based**: Uses standard markdown syntax for Discord formatting
 - **Live Preview**: See exactly how your text will look in Discord in real-time
-- **Two Output Modes**:
-  - **Discord Markdown**: Copy-paste directly into Discord messages
-  - **Embed JSON**: Use with Discord webhooks or bots
-- **Keyboard Shortcuts**: Fast formatting with familiar shortcuts
-- **Modern UI**: Beautiful Discord-themed interface
-- **Copy to Clipboard**: One-click copying for both markdown and JSON
+- **Simple Interface**: Clean, easy-to-use editor with toolbar buttons
+- **Copy to Clipboard**: One-click copying of formatted markdown
+- **No Dependencies**: Pure HTML/CSS/JavaScript - works offline
 
 ## 🚀 Getting Started
 
-### Quick Start
+### Download and Install
 
-1. Open `index.html` in your web browser
-2. Start typing or paste your content into the editor
-3. Use the toolbar buttons to format your text
-4. Copy the output and paste it into Discord!
+1. **Download the project**:
+   - Go to the GitHub repository
+   - Click the "Code" button
+   - Select "Download ZIP"
+   - Extract the ZIP file to your desired location
 
-### Using with a Local Server (Optional)
+2. **Open the editor**:
+   - Navigate to the extracted folder
+   - Double-click `index.html` to open it in your default web browser
+   - Alternatively, right-click `index.html` and select "Open with" → your preferred browser
 
-For the best experience, you can serve the files using a local web server:
+### Optional: Using Python Web Server
+
+For the best experience, you can serve the files using Python's built-in web server:
 
 ```bash
-# Using Python 3
+# Navigate to the project folder in terminal/command prompt
+cd /path/to/discordEditor
+
+# Start the web server (Python 3)
 python -m http.server 8000
 
-# Using Python 2
-python -m SimpleHTTPServer 8000
-
-# Using Node.js (npx http-server)
-npx http-server -p 8000
+# Then open http://localhost:8000 in your browser
 ```
 
-Then open `http://localhost:8000` in your browser.
+### Quick Start
+
+1. Start typing or paste your content into the editor
+2. Use the toolbar buttons to format your text
+3. Copy the markdown output and paste it into Discord!
 
 ## 📝 How to Use
 
 ### Formatting Text
 
-#### Toolbar Buttons
+This editor uses standard markdown syntax that Discord supports. You can format text in two ways:
+
+#### Method 1: Toolbar Buttons
 Click any toolbar button to apply formatting to selected text:
 
-- **Bold** (Ctrl/Cmd + B): `**text**`
-- **Italic** (Ctrl/Cmd + I): `*text*`
-- **Underline** (Ctrl/Cmd + U): `__text__`
-- **Strikethrough**: `~~text~~`
-- **Inline Code**: `` `text` ``
-- **Code Block**: ` ```text``` `
-- **Spoiler**: `||text||`
-- **Quote**: `> text`
-- **Block Quote**: `>>> text`
+- **Bold**: `**text**` → **text**
+- **Italic**: `*text*` → *text*
+- **Underline**: `__text__` → __text__
+- **Strikethrough**: `~~text~~` → ~~text~~
+- **Inline Code**: `` `text` `` → `text`
+- **Code Block**: ` ```text``` ` → ```text```
+- **Spoiler**: `||text||` → ||spoiler||
+- **Quote**: `> text` → > quote
+- **Block Quote**: `>>> text` → >>> block quote
 - **Headers**: `# H1`, `## H2`, `### H3`
-- **List**: `- item`
-- **Link**: `[text](url)`
+- **List**: `- item` → • item
+- **Link**: `[text](url)` → [text](url)
+
+#### Method 2: Type Markdown Directly
+You can also type the markdown syntax directly in the editor:
+
+1. Type your content using markdown syntax
+2. The live preview will show how it will appear in Discord
+3. Copy the formatted text and paste it into Discord
 
 #### Keyboard Shortcuts
 - **Ctrl/Cmd + B**: Bold
 - **Ctrl/Cmd + I**: Italic
 - **Ctrl/Cmd + U**: Underline
 
-### Output Modes
+## 🎨 Markdown Formatting Reference
 
-#### Discord Markdown (For Regular Messages)
-1. Type or format your content
-2. Click the "Discord Markdown" tab
-3. Click "Copy" to copy the markdown
-4. Paste directly into any Discord text channel
-
-#### Embed JSON (For Webhooks/Bots)
-1. Type or format your content
-2. Click the "Embed JSON" tab
-3. Optionally configure:
-   - Embed Title
-   - Embed Color (use color picker or hex code)
-   - Author Name
-   - Footer Text
-4. Click "Copy JSON"
-5. Use this JSON with Discord webhooks or bot APIs
-
-### Discord Webhook Example
-
-If you're using the Embed JSON output with a Discord webhook:
-
-```bash
-curl -X POST "YOUR_WEBHOOK_URL" \
-  -H "Content-Type: application/json" \
-  -d @- << EOF
-{
-  "embeds": [{
-    "title": "Your Title",
-    "description": "**Your formatted text**",
-    "color": 5793266,
-    "author": {
-      "name": "Author Name"
-    },
-    "footer": {
-      "text": "Footer Text"
-    }
-  }]
-}
-EOF
-```
-
-## 🎨 Discord Formatting Reference
+This editor supports standard markdown syntax that Discord recognizes:
 
 | Format | Syntax | Example |
 |--------|--------|---------|
@@ -126,49 +100,31 @@ EOF
 | Bullet List | `- text` | • text |
 | Link | `[text](url)` | [text](url) |
 
-## 🎯 Use Cases
-
-- **Content Creators**: Format announcements and updates
-- **Community Managers**: Create professional-looking messages
-- **Bot Developers**: Test embed designs before coding
-- **Server Admins**: Design welcome messages and rules
-- **Discord Users**: Make your messages stand out with proper formatting
-
 ## 💡 Tips
 
 1. **Combine Formats**: You can combine multiple formats, e.g., `***bold italic***`
 2. **Code Blocks**: Add a language identifier for syntax highlighting: ` ```js code``` `
-3. **Embed Colors**: Use the color picker to match your server's branding
-4. **Live Preview**: Watch the preview panel to see how your message will appear
-5. **Save Your Work**: Copy your markdown to a text file to save formatted messages
+3. **Live Preview**: Watch the preview panel to see how your message will appear in Discord
+4. **Save Your Work**: Copy your markdown to a text file to save formatted messages
 
 ## 🛠️ Technical Details
 
-- **Pure HTML/CSS/JavaScript**: No dependencies, no build process
+- **Pure HTML/CSS/JavaScript**: No dependencies, no build process required
 - **Modern Browser Required**: Uses ES6+ features and Clipboard API
-- **Responsive Design**: Works on desktop and mobile devices
-- **Offline Compatible**: Works without an internet connection (after initial load)
+- **Offline Compatible**: Works without an internet connection
+- **Cross-Platform**: Works on Windows, Mac, and Linux
 
 ## 📱 Browser Support
 
 - Chrome/Edge: ✅ Full support
-- Firefox: ✅ Full support
+- Firefox: ✅ Full support  
 - Safari: ✅ Full support
 - Opera: ✅ Full support
-
-## 🤝 Contributing
-
-Feel free to customize and enhance this editor for your needs!
-
-## 📄 License
-
-This project is open source and available for anyone to use and modify.
 
 ## 🔗 Resources
 
 - [Discord Markdown Documentation](https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101)
-- [Discord Embed Documentation](https://discord.com/developers/docs/resources/channel#embed-object)
-- [Discord Webhooks Guide](https://discord.com/developers/docs/resources/webhook)
+- [Standard Markdown Guide](https://www.markdownguide.org/)
 
 ---
 
