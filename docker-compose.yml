@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  discord-editor:
+    build: .
+    container_name: discord-rich-text-editor
+    ports:
+      - "8084:80"
+    restart: unless-stopped
+    environment:
+      - TZ=UTC
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    labels:
+      - "com.docker.compose.project=discord-editor"
+      - "com.docker.compose.service=discord-editor"

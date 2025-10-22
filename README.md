@@ -12,7 +12,43 @@ A simple web-based rich text editor for creating Discord-formatted messages usin
 
 ## 🚀 Getting Started
 
-### Download and Install
+### Option 1: Docker Deployment (Recommended for Home Server)
+
+This is the easiest way to deploy on a home server:
+
+1. **Prerequisites**:
+   - Docker and Docker Compose installed on your server
+   - Git (to clone the repository)
+
+2. **Deploy with Docker**:
+   ```bash
+   # Clone the repository
+   git clone <repository-url>
+   cd discordEditor
+   
+   # Build and start the container
+   docker-compose up -d
+   
+   # The app will be available at http://your-server-ip:8084
+   ```
+
+3. **Docker Commands**:
+   ```bash
+   # View logs
+   docker-compose logs -f
+   
+   # Stop the service
+   docker-compose down
+   
+   # Restart the service
+   docker-compose restart
+   
+   # Update to latest version
+   git pull
+   docker-compose up -d --build
+   ```
+
+### Option 2: Direct File Access
 
 1. **Download the project**:
    - Go to the GitHub repository
@@ -25,9 +61,9 @@ A simple web-based rich text editor for creating Discord-formatted messages usin
    - Double-click `index.html` to open it in your default web browser
    - Alternatively, right-click `index.html` and select "Open with" → your preferred browser
 
-### Optional: Using Python Web Server
+### Option 3: Python Web Server
 
-For the best experience, you can serve the files using Python's built-in web server:
+For local development, you can serve the files using Python's built-in web server:
 
 ```bash
 # Navigate to the project folder in terminal/command prompt
@@ -113,6 +149,8 @@ This editor supports standard markdown syntax that Discord recognizes:
 - **Modern Browser Required**: Uses ES6+ features and Clipboard API
 - **Offline Compatible**: Works without an internet connection
 - **Cross-Platform**: Works on Windows, Mac, and Linux
+- **Docker Ready**: Containerized with nginx for easy deployment
+- **Production Ready**: Includes gzip compression, caching, and security headers
 
 ## 📱 Browser Support
 
